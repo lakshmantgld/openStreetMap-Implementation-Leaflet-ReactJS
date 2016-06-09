@@ -12,7 +12,7 @@ import thunk from 'redux-thunk';
 import reducers from './reducers';
 
 import App from './components/App';
-import Account from './components/Account';
+import MapComponent from './components/MapComponent';
 
 window.React = React;
 
@@ -28,8 +28,8 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path='/' component={App}>
-        <IndexRoute component={Account} />
-        <Route path='source=:source/destination=:destination' component={Account}>
+        <IndexRoute component={MapComponent} />
+        <Route path='source=:source/destination=:destination' component={MapComponent}>
         </Route>
       </Route>
     </Router>

@@ -1,4 +1,4 @@
-import { STORE_SOURCE, STORE_DESTINATION, STORE_LATLNG } from './../actions/account';
+import { STORE_SOURCE, STORE_DESTINATION, STORE_LATLNG } from './../actions/mapActions';
 
 export function source(state = '', action) {
   switch(action.type) {

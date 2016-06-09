@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import { source, destination, latlngs } from './account';
+import { source, destination, latlngs } from './mapReducers';
 
 const reducers = combineReducers({
   source,

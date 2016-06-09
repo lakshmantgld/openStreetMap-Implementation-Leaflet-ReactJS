@@ -6,7 +6,7 @@ import { grey100, grey600 } from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
 
-import { storeSource, storeDestination, getShortestPath } from './../actions/account';
+import { storeSource, storeDestination, getShortestPath } from './../actions/mapActions';
 
 let styles = {
   formTab: {
@@ -37,7 +37,7 @@ let buttonStyle = {
 
 let mymap;
 
-class Account extends Component {
+class MapComponent extends Component {
   constructor(props) {
     super(props);
     this.storeSource = this.storeSource.bind(this);
@@ -159,7 +159,7 @@ class Account extends Component {
   }
 }
 
-Account.propTypes = {
+MapComponent.propTypes = {
   source: PropTypes.string.isRequired,
   destination: PropTypes.string.isRequired,
   latlngs: PropTypes.array.isRequired
@@ -169,4 +169,4 @@ export default connect(state => ({
   source: state.source,
   destination: state.destination,
   latlngs: state.latlngs
-}))(Account);
+}))(MapComponent);
