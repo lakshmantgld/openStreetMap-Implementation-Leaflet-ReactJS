@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
   let source = req.body.source;
   let destination = req.body.destination;
 
-  fs.readFile('/Users/lakshman/hammer/openStreetMap-Implementation-Leaflet-ReactJS/map.json', 'utf8', function(err, data) {
+  fs.readFile('map.json', 'utf8', function(err, data) {
 
     if(err) {
       throw err;
