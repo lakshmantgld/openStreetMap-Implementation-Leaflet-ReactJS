@@ -53,7 +53,7 @@ passport.use('oauth', new OAuth2Strategy(auth.oauth2Strategy, auth.authenticate)
 import flash from 'connect-flash';
 app.use(flash());
 
-app.use('/api/calculateShortestPath', require('./routes/api/account'));
+app.use('/api/calculateShortestPath', require('./routes/api/mapApi'));
 app.use('/', auth.isAuthenticated, require('./routes/index'));
 
 /* Error Handlers */
