@@ -77,6 +77,137 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
+var _getMuiTheme = require('material-ui/styles/getMuiTheme');
+
+var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
+
+var _MuiThemeProvider = require('material-ui/styles/MuiThemeProvider');
+
+var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+
+var _Header = require('./Header');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var App = function (_Component) {
+  _inherits(App, _Component);
+
+  function App() {
+    _classCallCheck(this, App);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
+  }
+
+  _createClass(App, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _MuiThemeProvider2.default,
+        { muiTheme: (0, _getMuiTheme2.default)() },
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_Header2.default, null),
+          this.props.children
+        )
+      );
+    }
+  }]);
+
+  return App;
+}(_react.Component);
+
+exports.default = (0, _reactRedux.connect)(function (state) {
+  return {};
+})(App);
+
+},{"./Header":3,"material-ui/styles/MuiThemeProvider":462,"material-ui/styles/getMuiTheme":465,"react":685,"react-redux":490}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _AppBar = require('material-ui/AppBar');
+
+var _AppBar2 = _interopRequireDefault(_AppBar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Header = function (_Component) {
+  _inherits(Header, _Component);
+
+  function Header(props) {
+    _classCallCheck(this, Header);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Header).call(this, props));
+  }
+
+  _createClass(Header, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'header',
+        null,
+        _react2.default.createElement(_AppBar2.default, {
+          className: 'headerBar',
+          title: _react2.default.createElement(
+            'a',
+            { href: '/' },
+            'Open Street Map implementation using ReactJS '
+          ),
+          showMenuIconButton: false
+        })
+      );
+    }
+  }]);
+
+  return Header;
+}(_react.Component);
+
+Header.propTypes = {};
+
+exports.default = (0, _reactRedux.connect)(function (state) {
+  return {};
+})(Header);
+
+},{"material-ui/AppBar":438,"react":685,"react-redux":490}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
 var _reactRouter = require('react-router');
 
 var _colors = require('material-ui/styles/colors');
@@ -89,7 +220,7 @@ var _RaisedButton = require('material-ui/RaisedButton');
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
-var _account = require('./../actions/account');
+var _mapActions = require('./../actions/mapActions');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -128,13 +259,13 @@ var buttonStyle = {
 
 var mymap = void 0;
 
-var Account = function (_Component) {
-  _inherits(Account, _Component);
+var MapComponent = function (_Component) {
+  _inherits(MapComponent, _Component);
 
-  function Account(props) {
-    _classCallCheck(this, Account);
+  function MapComponent(props) {
+    _classCallCheck(this, MapComponent);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Account).call(this, props));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MapComponent).call(this, props));
 
     _this.storeSource = _this.storeSource.bind(_this);
     _this.storeDestination = _this.storeDestination.bind(_this);
@@ -145,7 +276,7 @@ var Account = function (_Component) {
     return _this;
   }
 
-  _createClass(Account, [{
+  _createClass(MapComponent, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.leafletIntialization();
@@ -165,17 +296,17 @@ var Account = function (_Component) {
   }, {
     key: 'storeSource',
     value: function storeSource(e) {
-      this.props.dispatch((0, _account.storeSource)(e.target.value));
+      this.props.dispatch((0, _mapActions.storeSource)(e.target.value));
     }
   }, {
     key: 'storeDestination',
     value: function storeDestination(e) {
-      this.props.dispatch((0, _account.storeDestination)(e.target.value));
+      this.props.dispatch((0, _mapActions.storeDestination)(e.target.value));
     }
   }, {
     key: 'helperShortestPath',
     value: function helperShortestPath() {
-      this.props.dispatch((0, _account.getShortestPath)(this.props.source, this.props.destination));
+      this.props.dispatch((0, _mapActions.getShortestPath)(this.props.source, this.props.destination));
       setTimeout(this.drawShortestPath, 4000);
     }
   }, {
@@ -217,18 +348,18 @@ var Account = function (_Component) {
   }, {
     key: 'fillExample1',
     value: function fillExample1() {
-      this.props.dispatch((0, _account.getShortestPath)('4011390051', '3955372902'));
+      this.props.dispatch((0, _mapActions.getShortestPath)('4011390051', '3955372902'));
       setTimeout(this.drawShortestPath, 4000);
-      this.props.dispatch((0, _account.storeSource)('4011390051'));
-      this.props.dispatch((0, _account.storeDestination)('3955372902'));
+      this.props.dispatch((0, _mapActions.storeSource)('4011390051'));
+      this.props.dispatch((0, _mapActions.storeDestination)('3955372902'));
     }
   }, {
     key: 'fillExample2',
     value: function fillExample2() {
-      this.props.dispatch((0, _account.getShortestPath)('30978752', '42421969'));
+      this.props.dispatch((0, _mapActions.getShortestPath)('30978752', '42421969'));
       setTimeout(this.drawShortestPath, 4000);
-      this.props.dispatch((0, _account.storeSource)('30978752'));
-      this.props.dispatch((0, _account.storeDestination)('42421969'));
+      this.props.dispatch((0, _mapActions.storeSource)('30978752'));
+      this.props.dispatch((0, _mapActions.storeDestination)('42421969'));
     }
   }, {
     key: 'render',
@@ -306,10 +437,10 @@ var Account = function (_Component) {
     }
   }]);
 
-  return Account;
+  return MapComponent;
 }(_react.Component);
 
-Account.propTypes = {
+MapComponent.propTypes = {
   source: _react.PropTypes.string.isRequired,
   destination: _react.PropTypes.string.isRequired,
   latlngs: _react.PropTypes.array.isRequired
@@ -321,140 +452,9 @@ exports.default = (0, _reactRedux.connect)(function (state) {
     destination: state.destination,
     latlngs: state.latlngs
   };
-})(Account);
+})(MapComponent);
 
-},{"./../actions/account":1,"material-ui/RaisedButton":446,"material-ui/TextField":454,"material-ui/styles/colors":464,"react":685,"react-redux":490,"react-router":529}],3:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = require('react-redux');
-
-var _getMuiTheme = require('material-ui/styles/getMuiTheme');
-
-var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
-
-var _MuiThemeProvider = require('material-ui/styles/MuiThemeProvider');
-
-var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
-
-var _Header = require('./Header');
-
-var _Header2 = _interopRequireDefault(_Header);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var App = function (_Component) {
-  _inherits(App, _Component);
-
-  function App() {
-    _classCallCheck(this, App);
-
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
-  }
-
-  _createClass(App, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _MuiThemeProvider2.default,
-        { muiTheme: (0, _getMuiTheme2.default)() },
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_Header2.default, null),
-          this.props.children
-        )
-      );
-    }
-  }]);
-
-  return App;
-}(_react.Component);
-
-exports.default = (0, _reactRedux.connect)(function (state) {
-  return {};
-})(App);
-
-},{"./Header":4,"material-ui/styles/MuiThemeProvider":462,"material-ui/styles/getMuiTheme":465,"react":685,"react-redux":490}],4:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = require('react-redux');
-
-var _AppBar = require('material-ui/AppBar');
-
-var _AppBar2 = _interopRequireDefault(_AppBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Header = function (_Component) {
-  _inherits(Header, _Component);
-
-  function Header(props) {
-    _classCallCheck(this, Header);
-
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Header).call(this, props));
-  }
-
-  _createClass(Header, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'header',
-        null,
-        _react2.default.createElement(_AppBar2.default, {
-          className: 'headerBar',
-          title: _react2.default.createElement(
-            'a',
-            { href: '/' },
-            'Open Street Map implementation using ReactJS '
-          ),
-          showMenuIconButton: false
-        })
-      );
-    }
-  }]);
-
-  return Header;
-}(_react.Component);
-
-Header.propTypes = {};
-
-exports.default = (0, _reactRedux.connect)(function (state) {
-  return {};
-})(Header);
-
-},{"material-ui/AppBar":438,"react":685,"react-redux":490}],5:[function(require,module,exports){
+},{"./../actions/mapActions":1,"material-ui/RaisedButton":446,"material-ui/TextField":454,"material-ui/styles/colors":464,"react":685,"react-redux":490,"react-router":529}],5:[function(require,module,exports){
 'use strict';
 
 require('babel-polyfill');
@@ -491,9 +491,9 @@ var _App = require('./components/App');
 
 var _App2 = _interopRequireDefault(_App);
 
-var _Account = require('./components/Account');
+var _MapComponent = require('./components/MapComponent');
 
-var _Account2 = _interopRequireDefault(_Account);
+var _MapComponent2 = _interopRequireDefault(_MapComponent);
 
 var _reactTapEventPlugin = require('react-tap-event-plugin');
 
@@ -519,13 +519,35 @@ _reactDom2.default.render(_react2.default.createElement(
     _react2.default.createElement(
       _reactRouter.Route,
       { path: '/', component: _App2.default },
-      _react2.default.createElement(_reactRouter.IndexRoute, { component: _Account2.default }),
-      _react2.default.createElement(_reactRouter.Route, { path: 'source=:source/destination=:destination', component: _Account2.default })
+      _react2.default.createElement(_reactRouter.IndexRoute, { component: _MapComponent2.default }),
+      _react2.default.createElement(_reactRouter.Route, { path: 'source=:source/destination=:destination', component: _MapComponent2.default })
     )
   )
 ), document.getElementById('app'));
 
-},{"./components/Account":2,"./components/App":3,"./reducers":7,"babel-polyfill":8,"react":685,"react-dom":486,"react-redux":490,"react-router":529,"react-router-redux":496,"react-tap-event-plugin":542,"redux":703,"redux-logger":696,"redux-thunk":697}],6:[function(require,module,exports){
+},{"./components/App":2,"./components/MapComponent":4,"./reducers":6,"babel-polyfill":8,"react":685,"react-dom":486,"react-redux":490,"react-router":529,"react-router-redux":496,"react-tap-event-plugin":542,"redux":703,"redux-logger":696,"redux-thunk":697}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = require('redux');
+
+var _reactRouterRedux = require('react-router-redux');
+
+var _mapReducers = require('./mapReducers');
+
+var reducers = (0, _redux.combineReducers)({
+  source: _mapReducers.source,
+  destination: _mapReducers.destination,
+  latlngs: _mapReducers.latlngs,
+  routing: _reactRouterRedux.routerReducer
+});
+
+exports.default = reducers;
+
+},{"./mapReducers":7,"react-router-redux":496,"redux":703}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -535,14 +557,14 @@ exports.source = source;
 exports.destination = destination;
 exports.latlngs = latlngs;
 
-var _account = require('./../actions/account');
+var _mapActions = require('./../actions/mapActions');
 
 function source() {
   var state = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
   var action = arguments[1];
 
   switch (action.type) {
-    case _account.STORE_SOURCE:
+    case _mapActions.STORE_SOURCE:
       return action.source;
     default:
       return state;
@@ -554,7 +576,7 @@ function destination() {
   var action = arguments[1];
 
   switch (action.type) {
-    case _account.STORE_DESTINATION:
+    case _mapActions.STORE_DESTINATION:
       return action.destination;
     default:
       return state;
@@ -566,36 +588,14 @@ function latlngs() {
   var action = arguments[1];
 
   switch (action.type) {
-    case _account.STORE_LATLNG:
+    case _mapActions.STORE_LATLNG:
       return action.latlngs;
     default:
       return state;
   }
 }
 
-},{"./../actions/account":1}],7:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _redux = require('redux');
-
-var _reactRouterRedux = require('react-router-redux');
-
-var _account = require('./account');
-
-var reducers = (0, _redux.combineReducers)({
-  source: _account.source,
-  destination: _account.destination,
-  latlngs: _account.latlngs,
-  routing: _reactRouterRedux.routerReducer
-});
-
-exports.default = reducers;
-
-},{"./account":6,"react-router-redux":496,"redux":703}],8:[function(require,module,exports){
+},{"./../actions/mapActions":1}],8:[function(require,module,exports){
 (function (global){
 "use strict";
 
