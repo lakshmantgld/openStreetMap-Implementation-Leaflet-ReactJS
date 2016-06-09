@@ -5,22 +5,9 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import passport from 'passport';
-import OAuth2Strategy from 'passport-oauth2';
 import mongoose from 'mongoose';
 import url from 'url';
 import http from 'http';
-
-import auth from './lib/auth';
-import config from './config/config.json';
-
-// Connect to DB
-mongoose.connect(url.format({
-  protocol: config.mongodb.protocol,
-  slashes: true,
-  hostname: config.mongodb.hostname,
-  port: config.mongodb.port,
-  pathname: config.mongodb.path
-}));
 
 let app = express();
 
@@ -36,25 +23,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-  secret: 'secretkey4ansible-web',
-  resave: true,
-  saveUninitialized: true
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-passport.serializeUser(auth.serializeUser);
-passport.deserializeUser(auth.deserializeUser);
-passport.use('oauth', new OAuth2Strategy(auth.oauth2Strategy, auth.authenticate));
-
-// Using the flash middleware provided by connect-flash to store messages in session
-// and displaying in templates
-import flash from 'connect-flash';
-app.use(flash());
 
 app.use('/api/calculateShortestPath', require('./routes/api/mapApi'));
-app.use('/', auth.isAuthenticated, require('./routes/index'));
+app.use('/', require('./routes/index'));
 
 /* Error Handlers */
 // 404: Not Found
