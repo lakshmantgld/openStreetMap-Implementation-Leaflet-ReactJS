@@ -4,8 +4,10 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.STORE_LATLNG = exports.STORE_DESTINATION = exports.STORE_SOURCE = undefined;
+exports.STORE_DESTINATION_LABEL = exports.STORE_SOURCE_LABEL = exports.STORE_LATLNG = exports.STORE_DESTINATION = exports.STORE_SOURCE = undefined;
 exports.storeSource = storeSource;
+exports.storeSourceLabel = storeSourceLabel;
+exports.storeDestinationLabel = storeDestinationLabel;
 exports.storeDestination = storeDestination;
 exports.getShortestPath = getShortestPath;
 
@@ -18,12 +20,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var STORE_SOURCE = exports.STORE_SOURCE = 'STORE_SOURCE';
 var STORE_DESTINATION = exports.STORE_DESTINATION = 'STORE_DESTINATION';
 var STORE_LATLNG = exports.STORE_LATLNG = 'STORE_LATLNG';
+var STORE_SOURCE_LABEL = exports.STORE_SOURCE_LABEL = 'STORE_SOURCE_LABEL';
+var STORE_DESTINATION_LABEL = exports.STORE_DESTINATION_LABEL = 'STORE_DESTINATION_LABEL';
 
 function storeSource(source) {
   return function (dispatch) {
     return dispatch({
       type: STORE_SOURCE,
       source: source
+    });
+  };
+}
+
+function storeSourceLabel(sourceLabel) {
+  return function (dispatch) {
+    return dispatch({
+      type: STORE_SOURCE_LABEL,
+      sourceLabel: sourceLabel
+    });
+  };
+}
+
+function storeDestinationLabel(destinationLabel) {
+  return function (dispatch) {
+    return dispatch({
+      type: STORE_DESTINATION_LABEL,
+      destinationLabel: destinationLabel
     });
   };
 }
@@ -542,6 +564,8 @@ var reducers = (0, _redux.combineReducers)({
   source: _mapReducers.source,
   destination: _mapReducers.destination,
   latlngs: _mapReducers.latlngs,
+  sourceLabel: _mapReducers.sourceLabel,
+  destinationLabel: _mapReducers.destinationLabel,
   routing: _reactRouterRedux.routerReducer
 });
 
@@ -554,7 +578,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.source = source;
+exports.sourceLabel = sourceLabel;
 exports.destination = destination;
+exports.destinationLabel = destinationLabel;
 exports.latlngs = latlngs;
 
 var _mapActions = require('./../actions/mapActions');
@@ -571,6 +597,18 @@ function source() {
   }
 }
 
+function sourceLabel() {
+  var state = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case _mapActions.STORE_SOURCE_LABEL:
+      return action.sourceLabel;
+    default:
+      return state;
+  }
+}
+
 function destination() {
   var state = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
   var action = arguments[1];
@@ -578,6 +616,18 @@ function destination() {
   switch (action.type) {
     case _mapActions.STORE_DESTINATION:
       return action.destination;
+    default:
+      return state;
+  }
+}
+
+function destinationLabel() {
+  var state = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case _mapActions.STORE_DESTINATION_LABEL:
+      return action.destinationLabel;
     default:
       return state;
   }
