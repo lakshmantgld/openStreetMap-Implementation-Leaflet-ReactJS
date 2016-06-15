@@ -323,20 +323,18 @@ var MapComponent = function (_Component) {
   }, {
     key: 'storeSource',
     value: function storeSource(e) {
-      if (e.target.value === 'h') {
-        this.props.dispatch((0, _mapActions.storeSource)(e.target.value));
-      } else {
+      if (e.target.value !== 'h') {
         this.props.dispatch((0, _mapActions.storeSourceLabel)('Error!!'));
       }
+      this.props.dispatch((0, _mapActions.storeSource)(e.target.value));
     }
   }, {
     key: 'storeDestination',
     value: function storeDestination(e) {
-      if (e.target.value === 'h') {
-        this.props.dispatch((0, _mapActions.storeDestination)(e.target.value));
-      } else {
+      if (e.target.value !== 'h') {
         this.props.dispatch((0, _mapActions.storeDestinationLabel)('Error!!'));
       }
+      this.props.dispatch((0, _mapActions.storeDestination)(e.target.value));
     }
   }, {
     key: 'helperShortestPath',

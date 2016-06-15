@@ -69,19 +69,17 @@ class MapComponent extends Component {
   }
 
   storeSource(e) {
-    if (e.target.value === 'h') {
-      this.props.dispatch(storeSource(e.target.value));
-    } else {
+    if (e.target.value !== 'h') {
       this.props.dispatch(storeSourceLabel('Error!!'));
     }
+    this.props.dispatch(storeSource(e.target.value));
   }
 
   storeDestination(e) {
-    if (e.target.value === 'h') {
-      this.props.dispatch(storeDestination(e.target.value));
-    } else {
+    if (e.target.value !== 'h') {
       this.props.dispatch(storeDestinationLabel('Error!!'));
     }
+    this.props.dispatch(storeDestination(e.target.value));
   }
 
   helperShortestPath() {
