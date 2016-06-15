@@ -2,11 +2,11 @@ import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { grey100, grey600 } from 'material-ui/styles/colors';
+import { grey100, grey600, red500 } from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
 
-import { storeSource, storeDestination, getShortestPath } from './../actions/mapActions';
+import { storeSource, storeDestination, getShortestPath, storeSourceLabel } from './../actions/mapActions';
 
 let styles = {
   formTab: {
@@ -28,6 +28,11 @@ let styles = {
     text: 'bold',
     fontSize: '20px',
     color: grey600
+  },
+  errorLabel: {
+    text: 'bold',
+    fontSize: '17px',
+    color: red500
   }
 };
 
@@ -64,11 +69,19 @@ class MapComponent extends Component {
   }
 
   storeSource(e) {
-    this.props.dispatch(storeSource(e.target.value));
+    if (e.target.value === 'h') {
+      this.props.dispatch(storeSource(e.target.value));
+    } else {
+      this.props.dispatch(storeSourceLabel('Error!!'));
+    }
   }
 
   storeDestination(e) {
-    this.props.dispatch(storeDestination(e.target.value));
+    if (e.target.value === 'h') {
+      this.props.dispatch(storeDestination(e.target.value));
+    } else {
+      this.props.dispatch(storeDestinationLabel('Error!!'));
+    }
   }
 
   helperShortestPath() {
@@ -133,8 +146,10 @@ class MapComponent extends Component {
             <br />
             <label style={styles.formLabel}> Source </label>
             <TextField id='Source' hintText='Source' onChange={this.storeSource} value={this.props.source} />
+            <label style={styles.errorLabel}> {this.sourceLabel} </label>
             <label style={styles.formLabel}> Destination </label>
             <TextField id='Destination' hintText='Destination' onChange={this.storeDestination} value={this.props.destination} />
+            <label style={styles.errorLabel}> {this.destinationLabel} </label>
             <Link to={this.getUrl()} >
               <RaisedButton label="Go" primary={true} style={buttonStyle} onTouchTap={this.helperShortestPath} />
             </Link>
@@ -162,11 +177,15 @@ class MapComponent extends Component {
 MapComponent.propTypes = {
   source: PropTypes.string.isRequired,
   destination: PropTypes.string.isRequired,
-  latlngs: PropTypes.array.isRequired
+  latlngs: PropTypes.array.isRequired,
+  sourceLabel: PropTypes.string.isRequired,
+  destinationLabel: PropTypes.string.isRequired
 };
 
 export default connect(state => ({
   source: state.source,
   destination: state.destination,
-  latlngs: state.latlngs
+  latlngs: state.latlngs,
+  sourceLabel: state.sourceLabel,
+  destinationLabel: state.destinationLabel
 }))(MapComponent);

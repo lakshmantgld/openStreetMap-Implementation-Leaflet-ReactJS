@@ -272,6 +272,11 @@ var styles = {
     text: 'bold',
     fontSize: '20px',
     color: _colors.grey600
+  },
+  errorLabel: {
+    text: 'bold',
+    fontSize: '17px',
+    color: _colors.red500
   }
 };
 
@@ -318,12 +323,20 @@ var MapComponent = function (_Component) {
   }, {
     key: 'storeSource',
     value: function storeSource(e) {
-      this.props.dispatch((0, _mapActions.storeSource)(e.target.value));
+      if (e.target.value === 'h') {
+        this.props.dispatch((0, _mapActions.storeSource)(e.target.value));
+      } else {
+        this.props.dispatch((0, _mapActions.storeSourceLabel)('Error!!'));
+      }
     }
   }, {
     key: 'storeDestination',
     value: function storeDestination(e) {
-      this.props.dispatch((0, _mapActions.storeDestination)(e.target.value));
+      if (e.target.value === 'h') {
+        this.props.dispatch((0, _mapActions.storeDestination)(e.target.value));
+      } else {
+        this.props.dispatch(storeDestinationLabel('Error!!'));
+      }
     }
   }, {
     key: 'helperShortestPath',
@@ -411,10 +424,24 @@ var MapComponent = function (_Component) {
             _react2.default.createElement(_TextField2.default, { id: 'Source', hintText: 'Source', onChange: this.storeSource, value: this.props.source }),
             _react2.default.createElement(
               'label',
+              { style: styles.errorLabel },
+              ' ',
+              this.sourceLabel,
+              ' '
+            ),
+            _react2.default.createElement(
+              'label',
               { style: styles.formLabel },
               ' Destination '
             ),
             _react2.default.createElement(_TextField2.default, { id: 'Destination', hintText: 'Destination', onChange: this.storeDestination, value: this.props.destination }),
+            _react2.default.createElement(
+              'label',
+              { style: styles.errorLabel },
+              ' ',
+              this.destinationLabel,
+              ' '
+            ),
             _react2.default.createElement(
               _reactRouter.Link,
               { to: this.getUrl() },
@@ -465,14 +492,18 @@ var MapComponent = function (_Component) {
 MapComponent.propTypes = {
   source: _react.PropTypes.string.isRequired,
   destination: _react.PropTypes.string.isRequired,
-  latlngs: _react.PropTypes.array.isRequired
+  latlngs: _react.PropTypes.array.isRequired,
+  sourceLabel: _react.PropTypes.string.isRequired,
+  destinationLabel: _react.PropTypes.string.isRequired
 };
 
 exports.default = (0, _reactRedux.connect)(function (state) {
   return {
     source: state.source,
     destination: state.destination,
-    latlngs: state.latlngs
+    latlngs: state.latlngs,
+    sourceLabel: state.sourceLabel,
+    destinationLabel: state.destinationLabel
   };
 })(MapComponent);
 
