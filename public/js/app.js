@@ -427,6 +427,8 @@ var MapComponent = function (_Component) {
               this.sourceLabel,
               ' '
             ),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
             _react2.default.createElement(
               'label',
               { style: styles.formLabel },
@@ -440,6 +442,8 @@ var MapComponent = function (_Component) {
               this.destinationLabel,
               ' '
             ),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
             _react2.default.createElement(
               _reactRouter.Link,
               { to: this.getUrl() },
