@@ -15,4 +15,4 @@
 - React-router was used to navigate routes.
 
 ### Demo
-[NewYork map](https://hammerheadinterview.herokuapp.com)
+[NewYork map ](https://hammerheadinterview.herokuapp.com)
