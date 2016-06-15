@@ -6,7 +6,7 @@ import { grey100, grey600, red500 } from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
 
-import { storeSource, storeDestination, getShortestPath, storeSourceLabel } from './../actions/mapActions';
+import { storeSource, storeDestination, getShortestPath, storeSourceLabel, storeDestinationLabel } from './../actions/mapActions';
 
 let styles = {
   formTab: {

@@ -335,7 +335,7 @@ var MapComponent = function (_Component) {
       if (e.target.value === 'h') {
         this.props.dispatch((0, _mapActions.storeDestination)(e.target.value));
       } else {
-        this.props.dispatch(storeDestinationLabel('Error!!'));
+        this.props.dispatch((0, _mapActions.storeDestinationLabel)('Error!!'));
       }
     }
   }, {
