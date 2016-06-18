@@ -420,14 +420,14 @@ var MapComponent = function (_Component) {
               ' Source '
             ),
             _react2.default.createElement(_TextField2.default, { id: 'Source', hintText: 'Source', onChange: this.storeSource, value: this.props.source }),
+            _react2.default.createElement('br', null),
             _react2.default.createElement(
-              'label',
+              'p',
               { style: styles.errorLabel },
               ' ',
               this.sourceLabel,
               ' '
             ),
-            _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
             _react2.default.createElement(
               'label',
@@ -435,14 +435,14 @@ var MapComponent = function (_Component) {
               ' Destination '
             ),
             _react2.default.createElement(_TextField2.default, { id: 'Destination', hintText: 'Destination', onChange: this.storeDestination, value: this.props.destination }),
+            _react2.default.createElement('br', null),
             _react2.default.createElement(
-              'label',
+              'p',
               { style: styles.errorLabel },
               ' ',
               this.destinationLabel,
               ' '
             ),
-            _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
             _react2.default.createElement(
               _reactRouter.Link,
