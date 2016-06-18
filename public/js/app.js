@@ -423,7 +423,7 @@ var MapComponent = function (_Component) {
             _react2.default.createElement('br', null),
             _react2.default.createElement(
               'p',
-              { style: styles.errorLabel },
+              { style: styles.errorLabel, value: this.sourceLabel },
               ' ',
               this.sourceLabel,
               ' '
@@ -438,7 +438,7 @@ var MapComponent = function (_Component) {
             _react2.default.createElement('br', null),
             _react2.default.createElement(
               'p',
-              { style: styles.errorLabel },
+              { style: styles.errorLabel, value: this.destinationLabel },
               ' ',
               this.destinationLabel,
               ' '
