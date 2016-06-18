@@ -323,24 +323,26 @@ var MapComponent = function (_Component) {
   }, {
     key: 'storeSource',
     value: function storeSource(e) {
-      if (e.target.value !== 'h') {
-        this.props.dispatch((0, _mapActions.storeSourceLabel)('Error!!'));
+      if (isNaN(e.target.value)) {
+        this.props.dispatch((0, _mapActions.storeSourceLabel)('Only Node Ids are acceptable. Please try the examples'));
       }
       this.props.dispatch((0, _mapActions.storeSource)(e.target.value));
     }
   }, {
     key: 'storeDestination',
     value: function storeDestination(e) {
-      if (e.target.value !== 'h') {
-        this.props.dispatch((0, _mapActions.storeDestinationLabel)('Error!!'));
+      if (isNaN(e.target.value)) {
+        this.props.dispatch((0, _mapActions.storeDestinationLabel)('Only Node Ids are acceptable. Please try the examples'));
       }
       this.props.dispatch((0, _mapActions.storeDestination)(e.target.value));
     }
   }, {
     key: 'helperShortestPath',
     value: function helperShortestPath() {
-      this.props.dispatch((0, _mapActions.getShortestPath)(this.props.source, this.props.destination));
-      setTimeout(this.drawShortestPath, 4000);
+      if (!(isNaN(this.props.source) || isNaN(this.props.destination))) {
+        this.props.dispatch((0, _mapActions.getShortestPath)(this.props.source, this.props.destination));
+        setTimeout(this.drawShortestPath, 4000);
+      }
     }
   }, {
     key: 'drawShortestPath',

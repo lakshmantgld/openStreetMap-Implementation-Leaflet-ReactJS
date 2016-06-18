@@ -69,22 +69,24 @@ class MapComponent extends Component {
   }
 
   storeSource(e) {
-    if (e.target.value !== 'h') {
-      this.props.dispatch(storeSourceLabel('Error!!'));
+    if (isNaN(e.target.value)) {
+      this.props.dispatch(storeSourceLabel('Only Node Ids are acceptable. Please try the examples'));
     }
     this.props.dispatch(storeSource(e.target.value));
   }
 
   storeDestination(e) {
-    if (e.target.value !== 'h') {
-      this.props.dispatch(storeDestinationLabel('Error!!'));
+    if (isNaN(e.target.value)) {
+      this.props.dispatch(storeDestinationLabel('Only Node Ids are acceptable. Please try the examples'));
     }
     this.props.dispatch(storeDestination(e.target.value));
   }
 
   helperShortestPath() {
-    this.props.dispatch(getShortestPath(this.props.source, this.props.destination));
-    setTimeout(this.drawShortestPath, 4000);
+    if (!((isNaN(this.props.source) || isNaN(this.props.destination)))) {
+      this.props.dispatch(getShortestPath(this.props.source, this.props.destination));
+      setTimeout(this.drawShortestPath, 4000);
+    }
   }
 
   drawShortestPath() {
