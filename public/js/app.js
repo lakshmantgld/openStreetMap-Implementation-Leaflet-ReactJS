@@ -449,7 +449,7 @@ var MapComponent = function (_Component) {
             _react2.default.createElement(
               _reactRouter.Link,
               { to: this.getUrl() },
-              _react2.default.createElement(_RaisedButton2.default, { label: 'Go', primary: true, style: buttonStyle, onTouchTap: this.helperShortestPath })
+              _react2.default.createElement(_RaisedButton2.default, { label: 'Go', primary: true, style: buttonStyle, disabled: !(isNaN(this.props.source) || isNaN(this.props.destination)), onTouchTap: this.helperShortestPath })
             ),
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
