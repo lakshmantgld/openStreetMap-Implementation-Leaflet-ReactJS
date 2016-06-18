@@ -18,7 +18,7 @@ export function sourceLabel(state = '', action) {
   }
 }
 
-export function destination(state = '', action) {
+export function destination(state = 'dfgdfg', action) {
   switch(action.type) {
     case STORE_DESTINATION:
       return action.destination;
@@ -27,7 +27,7 @@ export function destination(state = '', action) {
   }
 }
 
-export function destinationLabel(state = '', action) {
+export function destinationLabel(state = 'dzfsdf', action) {
   switch(action.type) {
     case STORE_DESTINATION_LABEL:
       return action.destinationLabel;

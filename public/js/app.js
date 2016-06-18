@@ -643,7 +643,7 @@ function sourceLabel() {
 }
 
 function destination() {
-  var state = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+  var state = arguments.length <= 0 || arguments[0] === undefined ? 'dfgdfg' : arguments[0];
   var action = arguments[1];
 
   switch (action.type) {
@@ -655,7 +655,7 @@ function destination() {
 }
 
 function destinationLabel() {
-  var state = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+  var state = arguments.length <= 0 || arguments[0] === undefined ? 'dzfsdf' : arguments[0];
   var action = arguments[1];
 
   switch (action.type) {
