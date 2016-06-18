@@ -423,9 +423,9 @@ var MapComponent = function (_Component) {
             _react2.default.createElement('br', null),
             _react2.default.createElement(
               'p',
-              { style: styles.errorLabel, value: this.sourceLabel },
+              { style: styles.errorLabel },
               ' ',
-              this.sourceLabel,
+              this.props.sourceLabel,
               ' '
             ),
             _react2.default.createElement('br', null),
@@ -438,9 +438,9 @@ var MapComponent = function (_Component) {
             _react2.default.createElement('br', null),
             _react2.default.createElement(
               'p',
-              { style: styles.errorLabel, value: this.destinationLabel },
+              { style: styles.errorLabel },
               ' ',
-              this.destinationLabel,
+              this.props.destinationLabel,
               ' '
             ),
             _react2.default.createElement('br', null),
@@ -643,7 +643,7 @@ function sourceLabel() {
 }
 
 function destination() {
-  var state = arguments.length <= 0 || arguments[0] === undefined ? 'dfgdfg' : arguments[0];
+  var state = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
   var action = arguments[1];
 
   switch (action.type) {
@@ -655,7 +655,7 @@ function destination() {
 }
 
 function destinationLabel() {
-  var state = arguments.length <= 0 || arguments[0] === undefined ? 'dzfsdf' : arguments[0];
+  var state = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
   var action = arguments[1];
 
   switch (action.type) {

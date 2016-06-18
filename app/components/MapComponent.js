@@ -145,12 +145,12 @@ class MapComponent extends Component {
             <label style={styles.formLabel}> Source </label>
             <TextField id='Source' hintText='Source' onChange={this.storeSource} value={this.props.source} />
             <br />
-            <p style={styles.errorLabel} value={this.sourceLabel}> {this.sourceLabel} </p>
+            <p style={styles.errorLabel} > {this.props.sourceLabel} </p>
             <br />
             <label style={styles.formLabel}> Destination </label>
             <TextField id='Destination' hintText='Destination' onChange={this.storeDestination} value={this.props.destination} />
             <br />
-            <p style={styles.errorLabel} value={this.destinationLabel}> {this.destinationLabel} </p>
+            <p style={styles.errorLabel} > {this.props.destinationLabel} </p>
             <br />
             <Link to={this.getUrl()} >
               <RaisedButton label="Go" primary={true} style={buttonStyle} onTouchTap={this.helperShortestPath} />
