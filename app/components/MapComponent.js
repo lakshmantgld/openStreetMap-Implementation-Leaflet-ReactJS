@@ -155,7 +155,7 @@ class MapComponent extends Component {
             <p style={styles.errorLabel} > {this.props.destinationLabel} </p>
             <br />
             <Link to={this.getUrl()} >
-              <RaisedButton label="Go" primary={true} style={buttonStyle} onTouchTap={this.helperShortestPath} />
+              <RaisedButton label="Go" primary={true} style={buttonStyle} disabled={(!((isNaN(this.props.source) || isNaN(this.props.destination))))} onTouchTap={this.helperShortestPath} />
             </Link>
             <br />
             <br />
