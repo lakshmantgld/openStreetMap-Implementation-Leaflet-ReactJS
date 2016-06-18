@@ -71,6 +71,8 @@ class MapComponent extends Component {
   storeSource(e) {
     if (isNaN(e.target.value)) {
       this.props.dispatch(storeSourceLabel('Only Node Ids are acceptable. Please try the examples'));
+    } else {
+      this.props.dispatch(storeSourceLabel(''));
     }
     this.props.dispatch(storeSource(e.target.value));
   }
@@ -78,6 +80,8 @@ class MapComponent extends Component {
   storeDestination(e) {
     if (isNaN(e.target.value)) {
       this.props.dispatch(storeDestinationLabel('Only Node Ids are acceptable. Please try the examples'));
+    } else {
+      this.props.dispatch(storeDestinationLabel(''));
     }
     this.props.dispatch(storeDestination(e.target.value));
   }

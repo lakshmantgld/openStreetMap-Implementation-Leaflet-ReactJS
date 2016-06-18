@@ -325,6 +325,8 @@ var MapComponent = function (_Component) {
     value: function storeSource(e) {
       if (isNaN(e.target.value)) {
         this.props.dispatch((0, _mapActions.storeSourceLabel)('Only Node Ids are acceptable. Please try the examples'));
+      } else {
+        this.props.dispatch((0, _mapActions.storeSourceLabel)(''));
       }
       this.props.dispatch((0, _mapActions.storeSource)(e.target.value));
     }
@@ -333,6 +335,8 @@ var MapComponent = function (_Component) {
     value: function storeDestination(e) {
       if (isNaN(e.target.value)) {
         this.props.dispatch((0, _mapActions.storeDestinationLabel)('Only Node Ids are acceptable. Please try the examples'));
+      } else {
+        this.props.dispatch((0, _mapActions.storeDestinationLabel)(''));
       }
       this.props.dispatch((0, _mapActions.storeDestination)(e.target.value));
     }
