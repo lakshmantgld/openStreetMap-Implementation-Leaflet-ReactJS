@@ -49,7 +49,7 @@
     "material-ui": "^0.15.0",
     "moment": "^2.13.0",
     "mongoose": "^4.4.17",
-    "morgan": "~1.7.0",
+    "morgan": "~1.9.1",
     "multer": "^1.1.0",
     "node-dijkstra": "^2.2.1",
     "passport": "^0.3.2",
